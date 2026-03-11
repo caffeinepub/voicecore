@@ -1,0 +1,196 @@
+@font-face {
+  font-family: "Mona Sans";
+  src: url("/assets/fonts/MonaSans[wdth,wght].woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sora";
+  src: url("/assets/fonts/Sora[wght].woff2") format("woff2");
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0.12 0.02 280;
+    --foreground: 0.96 0.01 280;
+    --card: 0.15 0.025 280;
+    --card-foreground: 0.96 0.01 280;
+    --popover: 0.14 0.025 280;
+    --popover-foreground: 0.96 0.01 280;
+    --primary: 0.62 0.22 295;
+    --primary-foreground: 0.98 0.005 280;
+    --secondary: 0.55 0.22 200;
+    --secondary-foreground: 0.98 0.005 200;
+    --muted: 0.2 0.02 280;
+    --muted-foreground: 0.65 0.04 280;
+    --accent: 0.55 0.22 200;
+    --accent-foreground: 0.98 0.005 200;
+    --destructive: 0.6 0.22 25;
+    --destructive-foreground: 0.98 0.005 25;
+    --border: 0.25 0.04 280;
+    --input: 0.22 0.03 280;
+    --ring: 0.62 0.22 295;
+    --radius: 0.75rem;
+    --chart-1: 0.62 0.22 295;
+    --chart-2: 0.55 0.22 200;
+    --chart-3: 0.7 0.2 150;
+    --chart-4: 0.65 0.22 330;
+    --chart-5: 0.7 0.22 60;
+    --sidebar: 0.13 0.025 280;
+    --sidebar-foreground: 0.96 0.01 280;
+    --sidebar-primary: 0.62 0.22 295;
+    --sidebar-primary-foreground: 0.98 0.005 280;
+    --sidebar-accent: 0.18 0.03 280;
+    --sidebar-accent-foreground: 0.96 0.01 280;
+    --sidebar-border: 0.25 0.04 280;
+    --sidebar-ring: 0.62 0.22 295;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground font-body;
+    background-image: radial-gradient(
+        ellipse 80% 50% at 50% -20%,
+        oklch(0.2 0.08 295 / 0.4),
+        transparent
+      ),
+      radial-gradient(
+        ellipse 60% 40% at 80% 80%,
+        oklch(0.2 0.08 200 / 0.25),
+        transparent
+      );
+    background-attachment: fixed;
+  }
+}
+
+/* Waveform animation */
+@keyframes wave-bar {
+  0%,
+  100% {
+    transform: scaleY(0.3);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+.wave-bar {
+  animation: wave-bar 1.2s ease-in-out infinite;
+  transform-origin: bottom;
+}
+
+.wave-bar:nth-child(1) {
+  animation-delay: 0s;
+}
+.wave-bar:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.wave-bar:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.wave-bar:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.wave-bar:nth-child(5) {
+  animation-delay: 0.4s;
+}
+.wave-bar:nth-child(6) {
+  animation-delay: 0.3s;
+}
+.wave-bar:nth-child(7) {
+  animation-delay: 0.2s;
+}
+.wave-bar:nth-child(8) {
+  animation-delay: 0.1s;
+}
+.wave-bar:nth-child(9) {
+  animation-delay: 0s;
+}
+.wave-bar:nth-child(10) {
+  animation-delay: 0.15s;
+}
+.wave-bar:nth-child(11) {
+  animation-delay: 0.25s;
+}
+.wave-bar:nth-child(12) {
+  animation-delay: 0.35s;
+}
+.wave-bar:nth-child(13) {
+  animation-delay: 0.45s;
+}
+.wave-bar:nth-child(14) {
+  animation-delay: 0.35s;
+}
+.wave-bar:nth-child(15) {
+  animation-delay: 0.25s;
+}
+
+/* Neon glow utilities */
+.glow-purple {
+  box-shadow: 0 0 20px oklch(0.62 0.22 295 / 0.5), 0 0 40px
+    oklch(0.62 0.22 295 / 0.25);
+}
+.glow-cyan {
+  box-shadow: 0 0 20px oklch(0.55 0.22 200 / 0.5), 0 0 40px
+    oklch(0.55 0.22 200 / 0.25);
+}
+.text-glow-purple {
+  text-shadow: 0 0 20px oklch(0.62 0.22 295 / 0.8);
+}
+.text-glow-cyan {
+  text-shadow: 0 0 20px oklch(0.55 0.22 200 / 0.8);
+}
+
+/* Glass card */
+.glass-card {
+  background: oklch(0.16 0.03 280 / 0.6);
+  backdrop-filter: blur(16px);
+  border: 1px solid oklch(0.35 0.06 280 / 0.5);
+}
+.glass-card:hover {
+  border-color: oklch(0.55 0.15 295 / 0.7);
+  box-shadow: 0 0 30px oklch(0.62 0.22 295 / 0.15);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(
+    135deg,
+    oklch(0.72 0.22 295),
+    oklch(0.65 0.22 200)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: oklch(0.12 0.02 280);
+}
+::-webkit-scrollbar-thumb {
+  background: oklch(0.35 0.08 295);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.55 0.18 295);
+}
